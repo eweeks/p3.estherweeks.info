@@ -1,0 +1,33 @@
+/*-------------------------------------------------------------------------------------------------
+Layout
+-------------------------------------------------------------------------------------------------*/
+#wrapper {
+	width:960px;
+	margin:0px auto;
+	}
+
+.ui-slider{
+	background-color:blue;
+	color:green;
+}
+
+.ui-slider-handle{
+	color:yellow;
+	background-color:purple;
+}
+
+ul li {
+	display:inline;
+}
+
+li{
+	padding:0 1.2em;
+}
+#aperture li{
+	padding: 1.8em;
+}
+
+input{
+	border: none;
+	color: blue;
+}
