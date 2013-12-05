@@ -46,3 +46,6 @@ td{
 input {
     width: 3em;
 }
+.form-control{
+	width: 10%;
+}

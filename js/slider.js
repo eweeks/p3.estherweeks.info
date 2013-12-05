@@ -1,3 +1,19 @@
+		$(document).ready(function(){
+			$('input[type=checkbox]').attr('checked',false);
+			//$('input[type=radio]').attr('checked',false);
+			$('input:radio[name="option1"][value="full"]').prop('checked', true);
+			$('#selectFilter').hide();
+
+		})
+		
+		$('#checkFilter').click(function() {
+			if($('#checkFilter').is(':checked')){
+   				$('#selectFilter').show();
+   			}else{
+   				$('#selectFilter').hide();
+   			}
+   		})
+		
 		$(function() {
 			var light;
 			$( "#slider" ).slider({
@@ -116,11 +132,33 @@
 		}
 		$( "select" ).change(displayVals);
 		displayVals();
-		
+		changeScale();
+		//changeScale();
 		//function filter(){
 			//var filt = $( "#filter").val();
 			//var filter=Math.round((Math.LOG10E*Math.log($( "#filter").val()) * 3.321928)*100)/100;
 		//}
+		function changeScale(){
+			
+			$('#stop').click(function(){
+				if($('#oneHalf').is(':checked')) {
+					var half = [".8","1","1.2", "1.4","1.7","2","2.4","2.8","3.3","4","4.8","5.6"];
+					for(var i=0; i<=12; i=i+1){
+						$('#ap td').eq(i).html(half[i]);
+					}
+				}else if($('#oneThird').is(':checked')){
+					var full = [".9","1","1.1", "1.2","1.4","1.6","1.8","2","2.2","2.5","2.8","3.2"];
+					for(var i=0; i<=12; i=i+1){
+						$('#ap td').eq(i).html(full[i]);
+					}					
+				}else{
+					var full = ["1","1.4","2", "2.8","4","5.6","8","11","16","22","32","45"];
+					for(var i=0; i<=12; i=i+1){
+						$('#ap td').eq(i).html(full[i]);
+					}					
+				}
+			});
+		}
 		
 		});
 		

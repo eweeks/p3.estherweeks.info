@@ -7,7 +7,8 @@
 <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 <link href="css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="../css/slider.css" type="text/css">
+<link rel="stylesheet" href="css/slider.css" type="text/css">
+
 
 </head>
 <body>
@@ -19,7 +20,7 @@
 		<h2>ISO</h2>
 		<form id="speed">
 			<label for="isonumber">Select the iso</label>
-			<select id="isonumber">
+			<select id="isonumber" class="form-control">
 				<option>25</option>
 				<option>50</option>
 				<option>100</option>
@@ -42,25 +43,51 @@
 		</form>
 		<br>
 		<form id="filters">
-			<label for="filter">Select Filter</label>
-			<select id="filter">
-				<option>0</option>
-				<option>1</option>
-				<option>1.3</option>
-				<option>1.4</option>
-				<option>1.5</option>
-				<option>2</option>
-				<option>2.5</option>
-				<option>3</option>
-				<option>4</option>
-				<option>8</option>
-				<option>16</option>
-
-			</select>
+			<div class="checkbox">
+   				<label>
+      				<input type="checkbox" id="checkFilter">Using Filter?</label>
+  			</div>
+  			
+  			<div id="selectFilter">
+				<label for="filter">Select Filter</label>
+					<select id="filter" class="form-control">
+						<option>0</option>
+						<option>1</option>
+						<option>1.3</option>
+						<option>1.4</option>
+						<option>1.5</option>
+						<option>2</option>
+						<option>2.5</option>
+						<option>3</option>
+						<option>4</option>
+						<option>8</option>
+						<option>16</option>
+					</select>
+			</div>
 		</form>
-		<br><br>
+		<form id="stop" class="form-inline">
+			<h2>Scale</h2>
+			<div class="radio">
+   				<label for="full">
+   					<input type="radio" name="option1" id="full" value="full" checked="checked">
+   					Full stop scale
+   				</label>
+  			</div>			
+			<div class="radio">
+   				<label for="oneHalf">
+   					<input type="radio" name="option1" id="oneHalf" value="oneHalf">
+   					One-half stop scale
+   				</label>
+  			</div>
+  			<div class="radio">
+   				<label for="oneThird">
+   					<input type="radio" name="option1" id="oneThird" value="oneThird">
+   					One-third stop scale
+   				</label>
+  			</div>
 
-	<table class="table">
+  		</form>
+	<table class="table" id="ap">
         <thead>
           <tr>
             <th>Aperture</th>
