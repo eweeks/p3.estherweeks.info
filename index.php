@@ -12,65 +12,123 @@
 </head>
 <body>
 <div id="wrapper">
-	<form id="light">
-		 <label>Select the lighting</label>
-		 <input type="text" id="amount">
-		 
-		<div id="slider"></div>
-	</form>
-	<br><br>
-	
-	<form id="speed">
-		<label for="isonumber">Select the iso</label>
-		<select id="isonumber">
-			<option>25</option>
-			<option>50</option>
-			<option>100</option>
-			<option>200</option>
-			<option>400</option>
-			<option>800</option>
-			<option>1600</option>
-			<option>3200</option>
+	<section class="col-md-12 col-sm-8 col-xs-4">
+		<h1>Light Meter</h1>
+		<p>Use this light meter app to calculate exposures for your camera.</p>
+		
+		<h2>ISO</h2>
+		<form id="speed">
+			<label for="isonumber">Select the iso</label>
+			<select id="isonumber">
+				<option>25</option>
+				<option>50</option>
+				<option>100</option>
+				<option>200</option>
+				<option>400</option>
+				<option>800</option>
+				<option>1600</option>
+				<option>3200</option>
 
-		</select>
-	</form>	
-	<p>Lighting is set at <input type="text" id="ev"></p>
+			</select>
+		</form>
+		<br>
+		<h2>EV</h2>
+		<form id="light">
+		 	<label>Select the lighting</label>
+		 	<input type="text" id="amount" >
+		 	<p id="description"></p>
+		 
+			<div id="slider"></div>
+		</form>
+		<br><br>
 	
-	<p>iso is set at <input type="text" id="iso"></p>
 	
-	<br><br>
-	<p>Aperture</p>
-	<ul id="aperture">
-		<li>1</li>
-		<li>1.4</li>
-		<li>2</li>
-		<li>2.8</li>
-		<li>4</li>
-		<li>5.6</li>
-		<li>8</li>
-		<li>11</li>
-		<li>16</li>
-		<li>22</li>
-		<li>32</li>
-		<li>45</li>	
-	</ul>
-		<p>Shutter Speed</p>
-	<ul id="shutter">
-		<li>0</li>
-		<li>0</li>
-		<li>0</li>
-		<li>0</li>
-		<li>0</li>
-		<li>0</li>
-		<li>0</li>
-		<li>0</li>
-		<li>0</li>
-		<li>0</li>
-		<li>0</li>
-		<li>0</li>	
-	</ul>
+		<p>Lighting is set at <input type="text" id="ev"></p>
 	
-</div>
-<script src="js/slider.js"></script>
+		<p>iso is set at <input type="text" id="iso"></p>
+	
+		<br><br>
+		<p>Aperture</p>
+		<ul id="aperture">
+			<li>1</li>
+			<li>1.4</li>
+			<li>2</li>
+			<li>2.8</li>
+			<li>4</li>
+			<li>5.6</li>
+			<li>8</li>
+			<li>11</li>
+			<li>16</li>
+			<li>22</li>
+			<li>32</li>
+			<li>45</li>	
+		</ul>
+			<p>Shutter Speed</p>
+		<ul id="shutter">
+			<li>0</li>
+			<li>0</li>
+			<li>0</li>
+			<li>0</li>
+			<li>0</li>
+			<li>0</li>
+			<li>0</li>
+			<li>0</li>
+			<li>0</li>
+			<li>0</li>
+			<li>0</li>
+			<li>0</li>	
+		</ul>
+	<table class="table">
+        <thead>
+          <tr>
+            <th>Aperture</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>1.4</td>
+            <td>2</td>
+            <td>2.8</td>
+            <td>4</td>
+            <td>5.6</td>
+            <td>8</td>
+            <td>11</td>
+            <td>16</td>
+            <td>22</td>
+            <td>32</td>
+            <td>45</td>
+          </tr>
+        </tbody>
+      </table>
+      
+      <table class="table table-condensed">
+        <thead>
+          <tr>
+            <th id="ss">Shutter Speed</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+          </tr>
+        </tbody>
+      </table>
+		
+		
+	</section>
+	</div>
+	<script src="js/slider.js"></script>
 </body>
 </html>
