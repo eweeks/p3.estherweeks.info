@@ -71,8 +71,8 @@
 	
 		
 		function calculate(){
-			var e = $( "#ev").val();
-			var iso2 = $( "#iso").val();
+			var e = $('#slider').slider('value');
+			var iso2 = $( "#isonumber").val();;
 			var c = (15-e-.32195);
 			var start = (iso2/(Math.pow(2, c)) );
 			start = Math.round(start * 100) / 100;

@@ -40,12 +40,6 @@
 		 
 			<div id="slider"></div>
 		</form>
-		<br><br>
-	
-			
-		<p>Lighting is set at <input type="text" id="ev"></p>
-	
-		<p>iso is set at <input type="text" id="iso"></p>
 	
 		<br><br>
 		<!--<p>Aperture</p>
@@ -125,7 +119,11 @@
           </tr>
         </tbody>
       </table>
-		
+		<br><br>
+	
+			
+		<p>Lighting is set at <input type="text" id="ev">
+		ISO is set at <input type="text" id="iso"></p>
 		
 	</section>
 	</div>
