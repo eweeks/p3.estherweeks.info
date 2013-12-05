@@ -94,7 +94,8 @@
 				myArray[i]=j;
 			}
 			for(var i=0; i<=11; i=i+1){
-				$('#shutter li:eq('+i+')').html(myArray[i]);
+				//$('#shutter li:eq('+i+')').html(myArray[i]);
+				$('#ss td').eq(i).html(myArray[i]);
 			}
 			
 			function printElementAndIndex( elem, index ) {

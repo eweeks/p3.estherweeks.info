@@ -42,13 +42,13 @@
 		</form>
 		<br><br>
 	
-	
+			
 		<p>Lighting is set at <input type="text" id="ev"></p>
 	
 		<p>iso is set at <input type="text" id="iso"></p>
 	
 		<br><br>
-		<p>Aperture</p>
+		<!--<p>Aperture</p>
 		<ul id="aperture">
 			<li>1</li>
 			<li>1.4</li>
@@ -77,7 +77,7 @@
 			<li>0</li>
 			<li>0</li>
 			<li>0</li>	
-		</ul>
+		</ul> -->
 	<table class="table">
         <thead>
           <tr>
@@ -102,10 +102,10 @@
         </tbody>
       </table>
       
-      <table class="table table-condensed">
+      <table class="table table-condensed" id="ss">
         <thead>
           <tr>
-            <th id="ss">Shutter Speed</th>
+            <th>Shutter Speed</th>
           </tr>
         </thead>
         <tbody>
