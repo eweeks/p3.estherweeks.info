@@ -72,11 +72,12 @@
 		
 		function calculate(){
 			var e = $('#slider').slider('value');
-			var iso2 = $( "#isonumber").val();;
+			var iso2 = $( "#isonumber").val();
 			var c = (15-e-.32195);
 			var start = (iso2/(Math.pow(2, c)) );
 			start = Math.round(start * 100) / 100;
 			$('#shutter li:eq(9)').html(start);
+			var filter=Math.round((Math.LOG10E*Math.log($( "#filter").val()) * 3.321928)*100)/100;
 
 			
 			console.log("calculated, e is"+e+"iso is "+iso2 );
@@ -104,7 +105,6 @@
 			myArray.forEach( printElementAndIndex );
 			
 		}
-		
 
 		
 		function displayVals(){
@@ -117,5 +117,10 @@
 		$( "select" ).change(displayVals);
 		displayVals();
 		
+		//function filter(){
+			//var filt = $( "#filter").val();
+			//var filter=Math.round((Math.LOG10E*Math.log($( "#filter").val()) * 3.321928)*100)/100;
+		//}
 		
 		});
+		

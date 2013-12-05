@@ -40,38 +40,26 @@
 		 
 			<div id="slider"></div>
 		</form>
-	
+		<br>
+		<form id="filters">
+			<label for="filter">Select Filter</label>
+			<select id="filter">
+				<option>0</option>
+				<option>1</option>
+				<option>1.3</option>
+				<option>1.4</option>
+				<option>1.5</option>
+				<option>2</option>
+				<option>2.5</option>
+				<option>3</option>
+				<option>4</option>
+				<option>8</option>
+				<option>16</option>
+
+			</select>
+		</form>
 		<br><br>
-		<!--<p>Aperture</p>
-		<ul id="aperture">
-			<li>1</li>
-			<li>1.4</li>
-			<li>2</li>
-			<li>2.8</li>
-			<li>4</li>
-			<li>5.6</li>
-			<li>8</li>
-			<li>11</li>
-			<li>16</li>
-			<li>22</li>
-			<li>32</li>
-			<li>45</li>	
-		</ul>
-			<p>Shutter Speed</p>
-		<ul id="shutter">
-			<li>0</li>
-			<li>0</li>
-			<li>0</li>
-			<li>0</li>
-			<li>0</li>
-			<li>0</li>
-			<li>0</li>
-			<li>0</li>
-			<li>0</li>
-			<li>0</li>
-			<li>0</li>
-			<li>0</li>	
-		</ul> -->
+
 	<table class="table">
         <thead>
           <tr>
@@ -128,5 +116,10 @@
 	</section>
 	</div>
 	<script src="js/slider.js"></script>
+	<script>
+		//form.fstop.value = Math.round((Math.LOG10E*Math.log(form.filterfactor.value) * 3.321928)*100)/100
+		var filter=Math.round((Math.LOG10E*Math.log(3) * 3.321928)*100)/100;
+		console.log("Filter is " + filter);
+	</script>
 </body>
 </html>
