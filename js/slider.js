@@ -81,12 +81,13 @@ Filter
 				});
    			}else{
    				$('#selectFilter').hide();
+   				stop();
    			}
    		});
    		
-   		$("#filter").change(function(){
-			stop();
-		});
+   		//$("#filter").change(function(){
+		//	stop();
+		//});
 
 /*-------------------------------------------------------------------------------------------------
 Calculate (shutter speed)
@@ -203,6 +204,8 @@ Scale
 						}
 					}					
 				}
+				
+				calculate();
 		}
 		
 
