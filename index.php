@@ -143,10 +143,6 @@
 	</section>
 	</div>
 	<script src="js/slider.js"></script>
-	<script>
-		//form.fstop.value = Math.round((Math.LOG10E*Math.log(form.filterfactor.value) * 3.321928)*100)/100
-		var filter=Math.round((Math.LOG10E*Math.log(3) * 3.321928)*100)/100;
-		console.log("Filter is " + filter);
-	</script>
+
 </body>
 </html>
