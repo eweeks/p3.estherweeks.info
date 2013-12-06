@@ -48,6 +48,9 @@ input{
 th{
 	width: 8em;
 	}
+.table > thead > tr > th {
+	border: none;
+}	
 
 td{
 	width: 8em;
