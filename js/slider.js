@@ -106,25 +106,25 @@ Calculate (shutter speed)
 			for(var i=8; i>=0; i=i-1){
 				var j;
 				if($('#oneHalf').is(':checked')){
-					j=(myArray[i+1])*1.5;
+					j=(myArray[i+1])*Math.sqrt(2);
 				}else if($('#oneThird').is(':checked')){
-					j=(myArray[i+1])*1.33;
+					j=(myArray[i+1])*1.2599;
 				}else{
 					j=(myArray[i+1])*2;
 				}
-				j=Math.round(j * 100) / 100;
+				j=Math.round(j);
 				myArray[i]=j;
 			}
 			for(var i=10; i<=14; i=i+1){
 				var j;
 				if($('#oneHalf').is(':checked')){
-					j=(myArray[i-1])/1.5;
+					j=(myArray[i-1])/Math.sqrt(2);
 				}else if($('#oneThird').is(':checked')){
-					j=(myArray[i-1])/1.33;
+					j=(myArray[i-1])/1.2599;
 				}else{
 					j=(myArray[i-1])/2;
 				}
-				j=Math.round(j * 100) / 100;
+				j=Math.round(j);
 				myArray[i]=j;
 				
 			}
