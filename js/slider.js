@@ -19,7 +19,7 @@ Slider - using jQuery UI
 -------------------------------------------------------------------------------------------------*/
 		$( "#slider" ).slider({
 			//variables from jQuery UI for slider
-			value:6,
+			value:15,
 			min: 3,
 			max: 16,
 			step: 1,
@@ -96,17 +96,17 @@ Calculate (shutter speed)
 			var c = (15-e-0.32195);
 			var start = (iso2/(Math.pow(2, c)) );
 			start = Math.round(start * 100) / 100;
-			$('#shutter li:eq(9)').html(start);
+			//$('#shutter li:eq(9)').html(start);
 
 			
 			var myArray =[];
-			myArray[8] =start;
-			for(var i=7; i>=0; i=i-1){
+			myArray[9] =start;
+			for(var i=8; i>=0; i=i-1){
 				var j= (myArray[i+1])*2;
 				j=Math.round(j * 100) / 100;
 				myArray[i]=j;
 			}
-			for(var i=9; i<=14; i=i+1){
+			for(var i=10; i<=14; i=i+1){
 				var j=(myArray[i-1])/2;
 				j=Math.round(j * 100) / 100;
 				myArray[i]=j;

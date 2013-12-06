@@ -92,6 +92,7 @@
         </thead>
         <tbody>
           <tr>
+            <td>.7</td>
             <td>1</td>
             <td>1.4</td>
             <td>2</td>
@@ -103,10 +104,9 @@
             <td>16</td>
             <td>22</td>
             <td>32</td>
-            <td>45</td>
           </tr>
-          <tr><td>1</td></tr>
-          <tr><td>2</td> </tr>
+         <!-- <tr><td>1</td></tr>
+          <tr><td>2</td> </tr>-->
         </tbody>
       </table>
       
