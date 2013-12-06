@@ -13,7 +13,7 @@
 </head>
 <body>
 <div id="wrapper">
-	<section class="col-md-12 col-sm-8 col-xs-4">
+	<section class="col-md-12 col-sm-8 col-xs-4" id="wrapper2">
 		<h1>Light Meter</h1>
 		<p>Use this light meter app to calculate exposures for your camera.</p>
 		

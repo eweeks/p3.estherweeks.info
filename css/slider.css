@@ -3,49 +3,58 @@ Layout
 -------------------------------------------------------------------------------------------------*/
 #wrapper {
 	width:960px;
-	margin:0px auto;
+	margin: 2em auto;
 	}
-
+#wrapper2 {
+	background-color:#CCCCCC;
+	padding: 0 3em;
+	}
+body{
+	background-color:black;
+}
+input{
+	background-color:#CCCCCC;
+}
 .ui-slider{
 	background-color:blue;
 	color:green;
-}
+	}
 
 .ui-slider-handle{
 	color:yellow;
 	background-color:purple;
-}
+	}
 
 ul li {
 	display:inline;
-}
+	}
 
 li{
 	padding:0 1.2em;
-}
+	}
 
 h2{
 	font-size: 1.5em;
-}
+	}
 #aperture li{
 	padding: 1.8em;
-}
+	}
 
 input{
 	border: none;
 	color: blue;
-}
+	}
 
 th{
 	width: 8em;
-}
+	}
 
 td{
 	width: 8em;
-}
+	}
 input {
     width: 3em;
-}
+	}
 .form-control{
 	width: 10%;
-}
+	}
