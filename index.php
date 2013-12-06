@@ -109,7 +109,7 @@
           <tr><td>2</td> </tr>-->
         </tbody>
       </table>
-      
+      <div class="table-responsive">
       <table class="table table-condensed" id="ss">
         <thead>
           <tr>
@@ -133,6 +133,7 @@
           </tr>
         </tbody>
       </table>
+      </div>
 		<br><br>
 	
 			
