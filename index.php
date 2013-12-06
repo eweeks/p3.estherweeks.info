@@ -51,19 +51,16 @@
   			<div id="selectFilter">
 				<label for="filter">Select Filter</label>
 					<select id="filter" class="form-control">
-						<option>0</option>
+						<option></option>
 						<option>1</option>
-						<option>1.3</option>
-						<option>1.4</option>
-						<option>1.5</option>
 						<option>2</option>
-						<option>2.5</option>
 						<option>3</option>
 						<option>4</option>
 						<option>8</option>
 						<option>16</option>
 					</select>
 			</div>
+			<p id="info"></p>
 		</form>
 		<form id="stop" class="form-inline">
 			<h2>Scale</h2>
@@ -108,6 +105,8 @@
             <td>32</td>
             <td>45</td>
           </tr>
+          <tr><td>1</td></tr>
+          <tr><td>2</td> </tr>
         </tbody>
       </table>
       

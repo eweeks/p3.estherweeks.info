@@ -7,8 +7,13 @@ On load - clears inputs, resets
 			$('#selectFilter').hide();
 
 		});
-
-
+/*-------------------------------------------------------------------------------------------------
+Listeners
+-------------------------------------------------------------------------------------------------*/
+		//$('select,input[type=checkbox]').change(calculate);
+		//$('select,input[type=radio]').change(calculate);
+		//$("#isonumber").change(calculate);
+	
 /*-------------------------------------------------------------------------------------------------
 Slider - using jQuery UI
 -------------------------------------------------------------------------------------------------*/
@@ -114,52 +119,71 @@ Calculate (shutter speed)
 
 		
 		function displayVals(){
-			var three = $( "#isonumber").val();
-			$("#iso").val( three );
+			//var three = $( "#isonumber").val();
+			$("#iso").val($( "#isonumber").val());
 			calculate();
 
 		}
 		$( "select" ).change(displayVals);
 		displayVals();
-		changeScale();
+		//changeScale();
 
 
-		function changeScale(){
+		//function changeScale(){
 			
 			$('#stop').click(function(){
 				stop();
 			});
-		}
-		
+		//}
+
+/*-------------------------------------------------------------------------------------------------
+Scale
+-------------------------------------------------------------------------------------------------*/	
 		function stop(){
 			if($('#oneHalf').is(':checked')) {
-					var half = [".8","1","1.2", "1.4","1.7","2","2.4","2.8","3.3","4","4.8","5.6", "6.7", "8", "9.5", "11"];
+					var half = [".7", ".8","1","1.2", "1.4","1.7","2","2.4","2.8","3.3","4","4.8","5.6", "6.7", "8", "9.5", "11"];//fix
 					for(var i=0; i<=12; i=i+1){
 						if($('#checkFilter').is(':checked')){
 							var filter=Math.round((Math.LOG10E*Math.log($( "#filter").val()) * 3.321928)*100)/100;
-							$('#ap td').eq(i).html(half[i+filter]);
+							if((i-filter)<0){
+								$('#ap td').eq(i).html("-");
+							}else{							
+								$('#ap td').eq(i).html(half[i-filter]);
+							}
 						}else{
 							$('#ap td').eq(i).html(half[i]);
 						}
 					}
 				}else if($('#oneThird').is(':checked')){
-					var third = [".9","1","1.1", "1.2","1.4","1.6","1.8","2","2.2","2.5","2.8","3.2", "3.5", "4", "4.5", "5.0"];
+					var third = [".7",".8",".9","1","1.1", "1.2","1.4","1.6","1.8","2","2.2","2.5","2.8","3.2", "3.5", "4", "4.5", "5.0"];//fix
 					for(var i=0; i<=12; i=i+1){
 						if($('#checkFilter').is(':checked')){
 							var filter=Math.round((Math.LOG10E*Math.log($( "#filter").val()) * 3.321928)*100)/100;
-							$('#ap td').eq(i).html(third[i+filter]);
+							if((i-filter)<0){
+								$('#ap td').eq(i).html("-");
+							}else{							
+								$('#ap td').eq(i).html(third[i-filter]);
+							}
+						
 						}else{						
 							$('#ap td').eq(i).html(third[i]);
+
 						}
-					}					
+					}
+					
 				}else{
-					var full = ["1","1.4","2", "2.8","4","5.6","8","11","16","22","32","45", "64", "90", "128", "180"];
+					var full = [".7", "1","1.4","2", "2.8","4","5.6","8","11","16","22","32","45", "64", "90", "128", "180"];//fix
 					for(var i=0; i<=12; i=i+1){
 						if($('#checkFilter').is(':checked')){
 							var filter=Math.round((Math.LOG10E*Math.log($( "#filter").val()) * 3.321928)*100)/100;
-							$('#ap td').eq(i).html(full[i+filter]);
+							if((i-filter)<0){
+								$('#ap td').eq(i).html("-");
+							}else{
+								$('#ap td').eq(i).html(full[i-filter]);
+							}
 						}else{
 							$('#ap td').eq(i).html(full[i]);
+							$('#ap tr').eq(2).html(full[i]);
 						}
 					}					
 				}
