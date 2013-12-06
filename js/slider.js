@@ -5,6 +5,7 @@ On load - clears inputs, resets
 			$('input[type=checkbox]').attr('checked',false);
 			$('input:radio[name="option1"][value="full"]').prop('checked', true);
 			$('#selectFilter').hide();
+			calculate();
 
 		});
 /*-------------------------------------------------------------------------------------------------
@@ -102,14 +103,29 @@ Calculate (shutter speed)
 			var myArray =[];
 			myArray[9] =start;
 			for(var i=8; i>=0; i=i-1){
-				var j= (myArray[i+1])*2;
+				var j;
+				if($('#oneHalf').is(':checked')){
+					j=(myArray[i+1])*1.5;
+				}else if($('#oneThird').is(':checked')){
+					j=(myArray[i+1])*1.33;
+				}else{
+					j=(myArray[i+1])*2;
+				}
 				j=Math.round(j * 100) / 100;
 				myArray[i]=j;
 			}
 			for(var i=10; i<=14; i=i+1){
-				var j=(myArray[i-1])/2;
+				var j;
+				if($('#oneHalf').is(':checked')){
+					j=(myArray[i-1])/1.5;
+				}else if($('#oneThird').is(':checked')){
+					j=(myArray[i-1])/1.33;
+				}else{
+					j=(myArray[i-1])/2;
+				}
 				j=Math.round(j * 100) / 100;
 				myArray[i]=j;
+				
 			}
 			for(var i=0; i<=11; i=i+1){
 				$('#ss td').eq(i).html(myArray[i]);
