@@ -10,7 +10,7 @@ On load - clears inputs, resets
 
 
 /*-------------------------------------------------------------------------------------------------
-Slider
+Slider - using jQuery UI
 -------------------------------------------------------------------------------------------------*/
 		$( "#slider" ).slider({
 			//variables from jQuery UI for slider
@@ -23,8 +23,7 @@ Slider
 				$("#ev").val( $('#slider').slider('value'));
 				calculate();
 			},
-			
-			
+
 			slide: function( event, ui ) {
 				
 				$( "#amount" ).val( ui.value );
@@ -50,8 +49,7 @@ Slider
 					$('#description').html("Heavily overcast day");
 				}else if(ui.value==13){
 					$('#description').html("Bright cloudy day, no shadows");
-				}
-				else if(ui.value==14){
+				}else if(ui.value==14){
 					$('#description').html("Hazy sunshine, soft shadows");
 				}else if(ui.value==15){
 					$('#description').html("Bright sunny day, hard shadows");
@@ -64,6 +62,9 @@ Slider
 		}); //end slider
 		$( "#amount" ).val( $( "#slider" ).slider( "value" ) ); //Displays slider value next to heading
 
+/*-------------------------------------------------------------------------------------------------
+Filter
+-------------------------------------------------------------------------------------------------*/
 		$('#checkFilter').click(function() {
 			if($('#checkFilter').is(':checked')){
    				$('#selectFilter').show();
@@ -81,6 +82,9 @@ Slider
 			stop();
 		});
 
+/*-------------------------------------------------------------------------------------------------
+Calculate (shutter speed)
+-------------------------------------------------------------------------------------------------*/
 		function calculate(){
 			var e = $('#slider').slider('value');
 			var iso2 = $( "#isonumber").val();
