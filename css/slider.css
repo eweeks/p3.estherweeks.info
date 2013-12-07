@@ -8,6 +8,7 @@ Layout
 #wrapper2 {
 	background-color:#CCCCCC;
 	padding: 0 3em;
+	border-radius:20px;
 	}
 body{
 	background-color:black;
@@ -15,15 +16,7 @@ body{
 input{
 	background-color:#CCCCCC;
 }
-.ui-slider{
-	background-color:blue;
-	color:green;
-	}
 
-.ui-slider-handle{
-	color:yellow;
-	background-color:purple;
-	}
 
 ul li {
 	display:inline;
@@ -35,9 +28,6 @@ li{
 
 h2{
 	font-size: 1.5em;
-	}
-#aperture li{
-	padding: 1.8em;
 	}
 
 input{
@@ -61,3 +51,12 @@ input {
 .form-control{
 	width: 10%;
 	}
+
+#ss{
+	width:20%;
+}
+
+#ap{
+	width:20%;
+	float:left;
+}

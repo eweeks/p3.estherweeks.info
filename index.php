@@ -51,7 +51,7 @@
   			<div id="selectFilter">
 				<label for="filter">Select Filter</label>
 					<select id="filter" class="form-control">
-						<option></option>
+						<option>-</option>
 						<option>1</option>
 						<option>2</option>
 						<option>3</option>
@@ -91,49 +91,103 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>.7</td>
-            <td>1</td>
-            <td>1.4</td>
-            <td>2</td>
-            <td>2.8</td>
-            <td>4</td>
-            <td>5.6</td>
-            <td>8</td>
-            <td>11</td>
-            <td>16</td>
-            <td>22</td>
-            <td>32</td>
-          </tr>
-         <!-- <tr><td>1</td></tr>
-          <tr><td>2</td> </tr>-->
+        	<tr>
+            	<td>.7</td>
+        	</tr>
+        	<tr>
+            	<td>1</td>
+            </tr>
+        	<tr>
+            	<td>1.4</td>
+            </tr>
+        	<tr>
+            	<td>2</td>
+            </tr>
+        	<tr>
+            	<td>2.8</td>
+            </tr>
+        	<tr>
+            	<td>4</td>
+            </tr>
+        	<tr>
+            	<td>5.6</td>
+            </tr>
+        	<tr>
+            	<td>8</td>
+            </tr>
+        	<tr>
+            	<td>11</td>
+            </tr>
+        	<tr>
+            	<td>16</td>
+            </tr>
+        	<tr>
+            	<td>22</td>
+            </tr>
+        	<tr>
+            	<td>32</td>
+          	</tr>
+			<tr>
+            	<td>45</td>
+          	</tr>
+        	<tr>
+            	<td>64</td>
+          	</tr>	
+	
         </tbody>
       </table>
-      <div class="table-responsive">
-      <table class="table table-condensed" id="ss">
+      <table class="table " id="ss">
         <thead>
           <tr>
             <th>Shutter Speed</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-          </tr>
+			<tr>
+            	<td>0</td>
+        	</tr>
+        	<tr>
+            	<td>0</td>
+            </tr>
+            <tr>
+            	<td>0</td>
+            </tr>
+        	<tr>
+            	<td>0</td>
+            </tr>
+        	<tr>
+            	<td>0</td>
+            </tr>
+        	<tr>
+            	<td>0</td>
+            </tr>
+        	<tr>
+            	<td>0</td>
+            </tr>
+        	<tr>
+            	<td>0</td>
+            </tr>
+        	<tr>
+            	<td>0</td>
+            </tr>
+        	<tr>
+            	<td>0</td>
+            </tr>
+        	<tr>
+            	<td>0</td>
+            </tr>
+        	<tr>
+            	<td>0</td>
+          	</tr>
+        	<tr>
+            	<td>0</td>
+            </tr>
+        	<tr>
+            	<td>0</td>
+          	</tr>          	
         </tbody>
       </table>
-      </div>
+
 		<br><br>
 	
 			

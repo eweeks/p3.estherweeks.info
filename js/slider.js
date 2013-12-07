@@ -115,7 +115,7 @@ Calculate (shutter speed)
 				j=Math.round(j);
 				myArray[i]=j;
 			}
-			for(var i=10; i<=14; i=i+1){
+			for(var i=10; i<=13; i=i+1){
 				var j;
 				if($('#oneHalf').is(':checked')){
 					j=(myArray[i-1])/Math.sqrt(2);
@@ -128,7 +128,7 @@ Calculate (shutter speed)
 				myArray[i]=j;
 				
 			}
-			for(var i=0; i<=11; i=i+1){
+			for(var i=0; i<=13; i=i+1){
 				$('#ss td').eq(i).html(myArray[i]);
 			}
 			
@@ -159,7 +159,7 @@ Scale
 		function stop(){
 			if($('#oneHalf').is(':checked')) {
 					var half = ["3.3", "4","4.8","5.6", "6.7","8","9.5","11","13","16","19","22","27", "32"];//fix
-					for(var i=0; i<=12; i=i+1){
+					for(var i=0; i<=13; i=i+1){
 						if($('#checkFilter').is(':checked')){
 							var filter=Math.round((Math.LOG10E*Math.log($( "#filter").val()) * 3.321928)*100)/100;
 							if((i-filter)<0){
@@ -172,8 +172,8 @@ Scale
 						}
 					}
 				}else if($('#oneThird').is(':checked')){
-					var third = ["5.6","6.3","7.1","8","9","10","11","13","14","16","18","20","22","25", "29", "32"];//fix
-					for(var i=0; i<=12; i=i+1){
+					var third = ["5.6","6.3","7.1","8","9","10","11","13","14","16","18","20","22","25"];//fix
+					for(var i=0; i<=13; i=i+1){
 						if($('#checkFilter').is(':checked')){
 							var filter=Math.round((Math.LOG10E*Math.log($( "#filter").val()) * 3.321928)*100)/100;
 							if((i-filter)<0){
@@ -189,8 +189,8 @@ Scale
 					}
 					
 				}else{
-					var full = [".7", "1","1.4","2", "2.8","4","5.6","8","11","16","22","32","45", "64", "90", "128", "180"];//fix
-					for(var i=0; i<=12; i=i+1){
+					var full = [".7", "1","1.4","2", "2.8","4","5.6","8","11","16","22","32","45", "64"];//fix
+					for(var i=0; i<=13; i=i+1){
 						if($('#checkFilter').is(':checked')){
 							var filter=Math.round((Math.LOG10E*Math.log($( "#filter").val()) * 3.321928)*100)/100;
 							if((i-filter)<0){
@@ -200,7 +200,7 @@ Scale
 							}
 						}else{
 							$('#ap td').eq(i).html(full[i]);
-							$('#ap tr').eq(2).html(full[i]);
+							//$('#ap tr').eq(2).html(full[i]);
 						}
 					}					
 				}
