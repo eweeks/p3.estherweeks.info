@@ -8,18 +8,18 @@ On load - clears inputs, resets
 			$('#isonumber option:eq(2)').prop('selected', true);
 			$("#iso").val($( "#isonumber option:selected").text());
 			$("#ev").val( $('#slider').slider('value'));
-			for(var i=0; i<=13; i=i+1){
-				$('#ss td').eq(i).html(fullStops[i]);
-			}
+			//for(var i=0; i<=13; i=i+1){
+				//$('#ss td').eq(i).html(fullStops[i]);
+			//}
 			lastStop=0;
-			//calculate();
+			calculate();
 
 		});
 		var iso1=3;
 		var previous=15;
 		var lastStop;
 		var fullStops= ["64000", "32000","16000","8000", "4000","2000","1000","500","250","125",
-		"60","30","15", "8", "4", "2", '1\"', '2\"', '4\"', '8\"', '15\"', '30\" '];
+		"60","30","15", "8", "4", "2", '1', '2\"', '4\"', '8\"', '15\"', '30\" '];
 		var halfStops=["3000", "2000", "1500", "1000", "750", "500", "350", "250", "180",
 		"125", "90", "60", "45", "30", "20", "15", "11", "8", "6", "4", "3", "2"];
 		var tryStops=["-", "-", "-", "-","3000", "1500", "750", "350", "180",
@@ -120,11 +120,86 @@ Calculate (shutter speed)
 -------------------------------------------------------------------------------------------------*/
 		function calculate(){
 			var e = $('#slider').slider('value');
-			//var iso2 = $( "#isonumber").val();
+			var iso3 = $( "#isonumber").val();
 			var c = (15-e-0.32195);
 			var newStart=lastStop;
-			//var start = (iso2/(Math.pow(2, c)) );
-			//start = Math.round(start * 100) / 100;
+			var start = (iso3/(Math.pow(2, c)) );
+			start = Math.round(start);
+			console.log("starting point is "+start);
+			var point;
+			
+			//takes starting point calculation, and converts it to the scale used on most cameras
+			if(start>=15 && start<30){
+				start=15;
+				console.log("starting point is "+start);
+			}else if(start>=30 && start<60){
+				start=30;
+				console.log("starting point is "+start);
+			}else if(start>=60 && start<125){
+				start=60;
+				console.log("starting point is "+start);
+			}else if(start>=125 && start<250){
+				start=125;
+				console.log("starting point is "+start);
+			}
+			
+			//takes starting point from calculation, and finds where it is in correct array
+			if($('#oneHalf').is(':checked')){
+				point= jQuery.inArray(""+start+"", halfStops);
+				//gets starting value and sets starting point to this value - starting point is always
+				//the shutter speed that corresponds with 16
+				$('#ss td').eq(9).html(halfStops[point]);
+			}else if($('#oneThird').is(':checked')){
+				point= jQuery.inArray(""+start+"", thirdStops);
+				//gets starting value and sets starting point to this value - starting point is always
+				//the shutter speed that corresponds with 16
+				$('#ss td').eq(9).html(thirdStops[point]);
+			}else{
+				point= jQuery.inArray(""+start+"", fullStops); //searches array for starting value
+				//gets starting value and sets starting point to this value - starting point is always
+				//the shutter speed that corresponds with 16
+				$('#ss td').eq(9).html(fullStops[point]);
+			}
+			console.log("Point is "+ point);
+
+			
+			//this sets the values above the starting point, using array with set values
+			var up=point+1;	
+			for(var i=10; i<=13; i=i+1){
+				//var up=point;
+				if((up)>21){
+						$('#ss td').eq(i).html("-");
+				}else{				
+					if($('#oneHalf').is(':checked')){
+						$('#ss td').eq(i).html(halfStops[up]);
+					}else if($('#oneThird').is(':checked')){
+						$('#ss td').eq(i).html(thirdStops[up]);
+					}else{
+						$('#ss td').eq(i).html(fullStops[up]);
+					}
+				}
+				up=up+1;
+			
+			}
+			//this sets the values below the starting point, using the array with set values
+			var down=point-1;
+			for(var i=8; i>=0; i=i-1){
+				if((down)<0){
+						$('#ss td').eq(i).html("-");
+				}else{	
+					if($('#oneHalf').is(':checked')){
+						$('#ss td').eq(i).html(halfStops[down]);
+					}else if($('#oneThird').is(':checked')){
+						$('#ss td').eq(i).html(thirdStops[down]);
+					}else{
+						$('#ss td').eq(i).html(fullStops[down]);
+					}
+				}
+				down=down-1;
+				
+			}
+			
+			
 			//$('#shutter li:eq(9)').html(start);
 			
 			//iso1=$('#isonumber').val();
@@ -132,7 +207,7 @@ Calculate (shutter speed)
 			
 			//var nextStart;
 			
-			if(e > previous){
+			/*if(e > previous){
 				var decrease;
 				decrease=e-previous;
 				//console.log("decrease is " + decrease);
@@ -185,7 +260,7 @@ Calculate (shutter speed)
 				}
 			}else{
 				console.log("no change");
-			}
+			}*/
 			
 			
 			
@@ -269,8 +344,8 @@ Calculate (shutter speed)
 			//var three = $( "#isonumber").val();
 			$("#iso").val($( "#isonumber option:selected").text());
 			//$("#isonumber option:selected").text();
-			//calculate();
-			isoCalc();
+			calculate();
+			//isoCalc();
 
 		}
 		$( "select" ).change(displayVals);
@@ -302,7 +377,7 @@ Scale
 							}
 						}else{
 							$('#ap td').eq(i).html(half[i]);
-							$('#ss td').eq(i).html(halfStops[lastStop+i]);	
+							//$('#ss td').eq(i).html(halfStops[lastStop+i]);	
 						}
 					}
 				}else if($('#oneThird').is(':checked')){
@@ -319,7 +394,7 @@ Scale
 						
 						}else{						
 							$('#ap td').eq(i).html(third[i]);
-							$('#ss td').eq(i).html(thirdStops[lastStop+(i+3)]);
+							//$('#ss td').eq(i).html(thirdStops[lastStop+(i+3)]);
 
 						}
 					}

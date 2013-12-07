@@ -73,14 +73,14 @@
 		<form id="speed">
 			<label for="isonumber">Select the iso</label>
 			<select id="isonumber" class="form-control" name="isonum">
-				<option value="1">25</option>
-				<option value="2">50</option>
-				<option selected="selected" value="3">100</option>
-				<option value="4">200</option>
-				<option value="5">400</option>
-				<option value="6">800</option>
-				<option value="7">1600</option>
-				<option value="8">3200</option>
+				<option value="25">25</option>
+				<option value="50">50</option>
+				<option selected="selected" value="100">100</option>
+				<option value="200">200</option>
+				<option value="400">400</option>
+				<option value="800">800</option>
+				<option value="1600">1600</option>
+				<option value="3200">3200</option>
 
 			</select>
 		</form>
