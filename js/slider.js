@@ -20,6 +20,14 @@ On load - clears inputs, resets
 		var lastStop;
 		var fullStops= ["64000", "32000","16000","8000", "4000","2000","1000","500","250","125",
 		"60","30","15", "8", "4", "2", '1\"', '2\"', '4\"', '8\"', '15\"', '30\" '];
+		var halfStops=["3000", "2000", "1500", "1000", "750", "500", "350", "250", "180",
+		"125", "90", "60", "45", "30", "20", "15", "11", "8", "6", "4", "3", "2"];
+		var tryStops=["-", "-", "-", "-","3000", "1500", "750", "350", "180",
+		"90","45",  "20", "11", "6",  "3", "-", "-","-", "-","-", "-"];
+		var try2=["-", "-", "-", "-","3200", "2500", "1600", "1250", "800",
+		"640", "400", "320", "200", "160","100", "80","50"];
+		var thirdStops=["2000", "1600", "1250", "1000", "800", "640", "500",
+		"400", "320", "250", "200", "160", "125", "100", "80", "60", "50", "40", "30", "25"];
 /*-------------------------------------------------------------------------------------------------
 Listeners
 -------------------------------------------------------------------------------------------------*/
@@ -47,7 +55,7 @@ Slider - using jQuery UI
 			
 			slide: function( event, ui ) {
 				//previous =$('#slider').slider('value');
-				console.log("S is " + previous);
+				//console.log("S is " + previous);
 				
 				$( "#amount" ).val( ui.value );
 				if(ui.value==3){
@@ -129,12 +137,26 @@ Calculate (shutter speed)
 				decrease=e-previous;
 				//console.log("decrease is " + decrease);
 				lastStop= (newStart-decrease);
+				//if($('#oneHalf').is(':checked')){
+					//decrease=decrease+1;
+					//console.log("decrease is" + decrease);
+				//}
+				if($('#oneHalf').is(':checked')){
+					decrease=(decrease*2);
+				}
+				
 				for(var i=0; i<=13; i=i+1){
 					if((newStart-decrease)<0){
 						$('#ss td').eq(i).html("-");
 					}
-					
-					$('#ss td').eq(i).html(fullStops[newStart-decrease]);
+					if($('#oneHalf').is(':checked')){
+						$('#ss td').eq(i).html(halfStops[newStart-decrease]);
+						//$('#ss td').eq(i+1).html(fullStops[newStart-decrease]);
+						//i=i+1;
+					}else{
+						$('#ss td').eq(i).html(fullStops[newStart-decrease]);
+						//newStart=newStart+1;
+					}
 					newStart=newStart+1;
 				}
 				
@@ -143,15 +165,26 @@ Calculate (shutter speed)
 				increase=previous-e;
 				//console.log("increase is " + increase);
 				lastStop=(newStart+increase);
+				//if($('#oneHalf').is(':checked')){
+					//increase=increase+1;
+					//console.log("increase is" + increase);
+				//}			
+				if($('#oneHalf').is(':checked')){
+					increase=(increase*2);
+				}				
 				for(var i=0; i<=13; i=i+1){
 					if((newStart+increase)>21){
 						$('#ss td').eq(i).html("-");
 					}
-					$('#ss td').eq(i).html(fullStops[newStart+increase]);
+					if($('#oneHalf').is(':checked')){
+						$('#ss td').eq(i).html(halfStops[newStart+increase]);
+					}else{
+						$('#ss td').eq(i).html(fullStops[newStart+increase]);
+					}
 					newStart=newStart+1;
 				}
 			}else{
-			console.log("no change");
+				console.log("no change");
 			}
 			
 			
@@ -189,6 +222,7 @@ Calculate (shutter speed)
 				$('#ss td').eq(i).html(myArray[i]);
 			}*/
 			previous =$('#slider').slider('value');
+			console.log("Last stop is "+lastStop);
 		}
 		
 		function isoCalc(){
@@ -257,6 +291,7 @@ Scale
 		function stop(){
 			if($('#oneHalf').is(':checked')) {
 					var half = ["3.3", "4","4.8","5.6", "6.7","8","9.5","11","13","16","19","22","27", "32"];
+					var j=4;
 					for(var i=0; i<=13; i=i+1){
 						if($('#checkFilter').is(':checked')){
 							var filter=Math.round((Math.LOG10E*Math.log($( "#filter").val()) * 3.321928)*100)/100;
@@ -267,10 +302,12 @@ Scale
 							}
 						}else{
 							$('#ap td').eq(i).html(half[i]);
+							$('#ss td').eq(i).html(halfStops[lastStop+i]);	
 						}
 					}
 				}else if($('#oneThird').is(':checked')){
 					var third = ["5.6","6.3","7.1","8","9","10","11","13","14","16","18","20","22","25"];
+					var j=4;
 					for(var i=0; i<=13; i=i+1){
 						if($('#checkFilter').is(':checked')){
 							var filter=Math.round((Math.LOG10E*Math.log($( "#filter").val()) * 3.321928)*100)/100;
@@ -282,6 +319,7 @@ Scale
 						
 						}else{						
 							$('#ap td').eq(i).html(third[i]);
+							$('#ss td').eq(i).html(thirdStops[lastStop+(i+3)]);
 
 						}
 					}
@@ -298,6 +336,7 @@ Scale
 							}
 						}else{
 							$('#ap td').eq(i).html(full[i]);
+							//$('#ss td').eq(i).html(fullStops[i]);
 							//$('#ap tr').eq(2).html(full[i]);
 						}
 					}					

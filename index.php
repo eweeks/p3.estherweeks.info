@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
 <title>jQuery UI Slider - Slider bound to select</title>
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
 <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
@@ -13,7 +14,58 @@
 </head>
 <body>
 <div id="wrapper">
-	<section class="col-md-12 col-sm-8 col-xs-4" id="wrapper2">
+		<header>
+			    <!-- sample modal content -->
+    <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="myModalLabel">About Light Meter</h4>
+          </div>
+          <div class="modal-body">
+            <p>Light Meter was created by Esther Weeks for CSCI E-15, Dynamic Web Applications, Harvard Extension School</p>
+            <p>2013</p>
+            <span class="glyphicon glyphicon-tree-conifer"></span>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+			
+			
+			
+			
+			<nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+						<span class="sr-only">Toggle Navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+				</div>
+
+					
+				<!--Nav links here-->
+				<div class="collapse navbar-collapse navbar-ex1-collapse">
+					<ul class="nav navbar-nav">
+						<li><a href="#myModal" data-toggle="modal">About</a></li>
+						<li><a href="">Reset</a></li>
+
+
+					</ul>
+				</div> <!-- end navbar collapse-->
+			</nav>					
+
+		</header>	
+	
+	<section class="col-md-12 col-sm-8 col-xs-5 " id="wrapper2">
 		<h1>Light Meter</h1>
 		<p>Use this light meter app to calculate exposures for your camera.</p>
 		
@@ -197,6 +249,8 @@
 	</section>
 	</div>
 	<script src="js/slider.js"></script>
+	<script src="js/bootstrap.min.js"></script> <!--Must be second, this refers to jquery -->
+	
 
 </body>
 </html>
