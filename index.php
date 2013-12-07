@@ -20,15 +20,15 @@
 		<h2>ISO</h2>
 		<form id="speed">
 			<label for="isonumber">Select the iso</label>
-			<select id="isonumber" class="form-control">
-				<option>25</option>
-				<option>50</option>
-				<option>100</option>
-				<option>200</option>
-				<option>400</option>
-				<option>800</option>
-				<option>1600</option>
-				<option>3200</option>
+			<select id="isonumber" class="form-control" name="isonum">
+				<option value="1">25</option>
+				<option value="2">50</option>
+				<option selected="selected" value="3">100</option>
+				<option value="4">200</option>
+				<option value="5">400</option>
+				<option value="6">800</option>
+				<option value="7">1600</option>
+				<option value="8">3200</option>
 
 			</select>
 		</form>

@@ -5,9 +5,21 @@ On load - clears inputs, resets
 			$('input[type=checkbox]').attr('checked',false);
 			$('input:radio[name="option1"][value="full"]').prop('checked', true);
 			$('#selectFilter').hide();
-			calculate();
+			$('#isonumber option:eq(2)').prop('selected', true);
+			$("#iso").val($( "#isonumber option:selected").text());
+			$("#ev").val( $('#slider').slider('value'));
+			for(var i=0; i<=13; i=i+1){
+				$('#ss td').eq(i).html(fullStops[i]);
+			}
+			lastStop=0;
+			//calculate();
 
 		});
+		var iso1=3;
+		var previous=15;
+		var lastStop;
+		var fullStops= ["64000", "32000","16000","8000", "4000","2000","1000","500","250","125",
+		"60","30","15", "8", "4", "2", '1\"', '2\"', '4\"', '8\"', '15\"', '30\" '];
 /*-------------------------------------------------------------------------------------------------
 Listeners
 -------------------------------------------------------------------------------------------------*/
@@ -27,10 +39,15 @@ Slider - using jQuery UI
 			//This insures that when the slider is changed, runs calculate function to update shutter speed
 			change: function (event, ui) {
 				$("#ev").val( $('#slider').slider('value'));
-				calculate();
+				
+				if(previous!=$('#slider').slider('value')){
+					calculate();
+				}
 			},
-
+			
 			slide: function( event, ui ) {
+				//previous =$('#slider').slider('value');
+				console.log("S is " + previous);
 				
 				$( "#amount" ).val( ui.value );
 				if(ui.value==3){
@@ -62,7 +79,8 @@ Slider - using jQuery UI
 				}else{
 					$('#description').html("Bright sun on sand or snow");
 				}
-				
+				calculate();
+				//previous =$('#slider').slider('value');
 			}
 			
 		}); //end slider
@@ -94,14 +112,53 @@ Calculate (shutter speed)
 -------------------------------------------------------------------------------------------------*/
 		function calculate(){
 			var e = $('#slider').slider('value');
-			var iso2 = $( "#isonumber").val();
+			//var iso2 = $( "#isonumber").val();
 			var c = (15-e-0.32195);
-			var start = (iso2/(Math.pow(2, c)) );
-			start = Math.round(start * 100) / 100;
+			var newStart=lastStop;
+			//var start = (iso2/(Math.pow(2, c)) );
+			//start = Math.round(start * 100) / 100;
 			//$('#shutter li:eq(9)').html(start);
-
 			
-			var myArray =[];
+			//iso1=$('#isonumber').val();
+			
+			
+			//var nextStart;
+			
+			if(e > previous){
+				var decrease;
+				decrease=e-previous;
+				//console.log("decrease is " + decrease);
+				lastStop= (newStart-decrease);
+				for(var i=0; i<=13; i=i+1){
+					if((newStart-decrease)<0){
+						$('#ss td').eq(i).html("-");
+					}
+					
+					$('#ss td').eq(i).html(fullStops[newStart-decrease]);
+					newStart=newStart+1;
+				}
+				
+			}else if(e<previous){
+				var increase;
+				increase=previous-e;
+				//console.log("increase is " + increase);
+				lastStop=(newStart+increase);
+				for(var i=0; i<=13; i=i+1){
+					if((newStart+increase)>21){
+						$('#ss td').eq(i).html("-");
+					}
+					$('#ss td').eq(i).html(fullStops[newStart+increase]);
+					newStart=newStart+1;
+				}
+			}else{
+			console.log("no change");
+			}
+			
+			
+			
+			
+			
+			/*var myArray =[];
 			myArray[9] =start;
 			for(var i=8; i>=0; i=i-1){
 				var j;
@@ -130,19 +187,60 @@ Calculate (shutter speed)
 			}
 			for(var i=0; i<=13; i=i+1){
 				$('#ss td').eq(i).html(myArray[i]);
+			}*/
+			previous =$('#slider').slider('value');
+		}
+		
+		function isoCalc(){
+			var iso2 = $( "#isonumber").val();
+			console.log("iso2 value is  " + iso2);
+			console.log("iso1 value is  " + iso1);
+			var newStart=lastStop;
+			if(iso2>iso1){
+				var change=iso2-iso1;
+				console.log("iso change is  " + change);
+				lastStop=(newStart-change);
+				iso1=iso2;
+
+				for(var i=0; i<=13; i=i+1){
+					if((newStart-change)<0){
+						$('#ss td').eq(i).html("-");
+					}					
+					
+					$('#ss td').eq(i).html(fullStops[newStart-change]);
+					newStart=newStart+1;
+				}				
+				
+			}else if(iso2<iso1){
+				var change=iso1-iso2;
+				console.log("iso change is  " + change);
+				lastStop=(newStart+change);
+				iso1=iso2;
+
+				for(var i=0; i<=13; i=i+1){
+					if((newStart+change)>21){
+						$('#ss td').eq(i).html("-");
+					}					
+					
+					$('#ss td').eq(i).html(fullStops[newStart+change]);
+					newStart=newStart+1;
+				}
 			}
 			
+			console.log("last stop is  " + lastStop);		
 		}
 
 		
 		function displayVals(){
 			//var three = $( "#isonumber").val();
-			$("#iso").val($( "#isonumber").val());
-			calculate();
+			$("#iso").val($( "#isonumber option:selected").text());
+			//$("#isonumber option:selected").text();
+			//calculate();
+			isoCalc();
 
 		}
 		$( "select" ).change(displayVals);
-		displayVals();
+		//displayVals();
 		//changeScale();
 
 
@@ -158,7 +256,7 @@ Scale
 -------------------------------------------------------------------------------------------------*/	
 		function stop(){
 			if($('#oneHalf').is(':checked')) {
-					var half = ["3.3", "4","4.8","5.6", "6.7","8","9.5","11","13","16","19","22","27", "32"];//fix
+					var half = ["3.3", "4","4.8","5.6", "6.7","8","9.5","11","13","16","19","22","27", "32"];
 					for(var i=0; i<=13; i=i+1){
 						if($('#checkFilter').is(':checked')){
 							var filter=Math.round((Math.LOG10E*Math.log($( "#filter").val()) * 3.321928)*100)/100;
@@ -172,7 +270,7 @@ Scale
 						}
 					}
 				}else if($('#oneThird').is(':checked')){
-					var third = ["5.6","6.3","7.1","8","9","10","11","13","14","16","18","20","22","25"];//fix
+					var third = ["5.6","6.3","7.1","8","9","10","11","13","14","16","18","20","22","25"];
 					for(var i=0; i<=13; i=i+1){
 						if($('#checkFilter').is(':checked')){
 							var filter=Math.round((Math.LOG10E*Math.log($( "#filter").val()) * 3.321928)*100)/100;
@@ -189,7 +287,7 @@ Scale
 					}
 					
 				}else{
-					var full = [".7", "1","1.4","2", "2.8","4","5.6","8","11","16","22","32","45", "64"];//fix
+					var full = [".7", "1","1.4","2", "2.8","4","5.6","8","11","16","22","32","45", "64"];
 					for(var i=0; i<=13; i=i+1){
 						if($('#checkFilter').is(':checked')){
 							var filter=Math.round((Math.LOG10E*Math.log($( "#filter").val()) * 3.321928)*100)/100;
