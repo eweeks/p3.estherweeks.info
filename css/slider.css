@@ -61,5 +61,8 @@ Classes and Ids
 .form-control{
 	width: 10%;
 	}
-
+	
+.form-inline {
+    margin-bottom: 4em;
+}
 

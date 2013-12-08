@@ -125,6 +125,8 @@
 				</form>
 
 				<!-- Exposures Chart -->
+				<h2>Exposure Calculations</h2>
+							
 				<table class="table" id="ap">
 					<thead>
 						<tr>
@@ -228,9 +230,8 @@
 					</tbody>
 				</table>
 				<br><br>
-				<p>Lighting is set at
-					<input type="text" id="ev">ISO is set at
-					<input type="text" id="iso">
+				<p>Lighting is set at<input type="text" id="ev">
+					ISO is set at<input type="text" id="iso">
 				</p>
 			</section>
 		</div>

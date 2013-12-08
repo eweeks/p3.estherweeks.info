@@ -107,36 +107,16 @@ Calculate (shutter speed)
 			start = (iso3/(Math.pow(2, c)) );
 			var point;
 			
-			console.log("starting point is "+start);
 			if(start<1){
 				start=Math.round(1/start);
 				check();
 				start=start+'\"';
-				console.log("starting point lower is "+start);
 			}else{
 				//rounds off calculation
 				start = Math.round(start);
 				check();
 			}
-			console.log("starting point is "+start);
-			
-			
-			/*
-			//takes starting point calculation, and converts it to the scale used on most cameras
-			if(start>=15 && start<30){
-				start=15;
-				console.log("starting point is "+start);
-			}else if(start>=30 && start<60){
-				start=30;
-				console.log("starting point is "+start);
-			}else if(start>=60 && start<125){
-				start=60;
-				console.log("starting point is "+start);
-			}else if(start>=125 && start<250){
-				start=125;
-				console.log("starting point is "+start);
-			}*/
-			
+
 			//takes starting point from calculation, and finds where it is in correct array
 			if($('#oneHalf').is(':checked')){
 				point= jQuery.inArray(""+start+"", halfStops);
@@ -154,9 +134,8 @@ Calculate (shutter speed)
 				//the shutter speed that corresponds with 16
 				$('#ss td').eq(9).html(fullStops[point]);
 			}
-			console.log("Point is "+ point);
 
-			
+
 			//this sets the values above the starting point, using array with set values
 			var up=point+1;	
 			for(var i=10; i<=13; i=i+1){
@@ -175,7 +154,6 @@ Calculate (shutter speed)
 				}else{
 					if((up)>=fullStops.length){
 						$('#ss td').eq(i).html("-");
-						console.log("Full Stop length is reached  "+fullStops.length);
 					}else{
 						$('#ss td').eq(i).html(fullStops[up]);
 					}
@@ -214,17 +192,13 @@ Calculate (shutter speed)
 	function check(){
 			if(start>=15 && start<30){
 				start=15;
-				console.log("starting point is "+start);
 			}else if(start>=30 && start<60){
 				start=30;
-				console.log("starting point is "+start);
 			}else if(start>=60 && start<125){
 				start=60;
-				console.log("starting point is "+start);
 			}else if(start>=125 && start<250){
 				start=125;
-				console.log("starting point is "+start);
-			}	
+			}
 	
 	}
 
