@@ -12,11 +12,10 @@ On load - clears inputs, resets
 			calculate();
 
 		});
-		
+		//Variables used through out 
 		var lastStop;
-		
 		var fullStops= ["64000", "32000","16000","8000", "4000","2000","1000","500","250","125",
-		"60","30","15", "8", "4", "2", '1', '2', '4', '8', '15', '30" '];
+		"60","30","15", "8", "4", "2", '1', '2\"', '4\"', '8\"', '15\"', '30\"' ];
 		var halfStops=["3000", "2000", "1500", "1000", "750", "500", "350", "250", "180",
 		"125", "90", "60", "45", "30", "20", "15", "11", "8", "6", "4", "3", "2"];
 		var thirdStops=["2000", "1600", "1250", "1000", "800", "640", "500",
@@ -39,8 +38,6 @@ Slider - using jQuery UI
 			},
 			
 			slide: function( event, ui ) {
-
-				
 				$( "#amount" ).val( ui.value );
 				/*if(ui.value==3){
 					$('#description').html("Streetlights, Fireworks");	
@@ -52,7 +49,8 @@ Slider - using jQuery UI
 					$('#description').html("Bright night interior, shady day interior");
 				}else if(ui.value==7){
 					$('#description').html("Indoor sports, stage shows");
-				}else*/ if(ui.value==8){
+				}else*/ 
+				if(ui.value==8){
 					$('#description').html("Floodlit stadium, bright day interior");
 				}else if(ui.value==9){
 					$('#description').html("Neon lights, spot-lit subjects");
@@ -82,17 +80,17 @@ Filter
 -------------------------------------------------------------------------------------------------*/
 		$('#checkFilter').click(function() {
 			if($('#checkFilter').is(':checked')){
-   				$('#selectFilter').show();
-   				var filter=Math.round((Math.LOG10E*Math.log($( "#filter").val()) * 3.321928)*100)/100;
+				$('#selectFilter').show();
+				var filter=Math.round((Math.LOG10E*Math.log($( "#filter").val()) * 3.321928)*100)/100;
 				stop();
 				$("#filter").change(function(){
 					stop();
 				});
-   			}else{
-   				$('#selectFilter').hide();
-   				stop();
-   			}
-   		});
+			}else{
+				$('#selectFilter').hide();
+				stop();
+			}
+		});
 
 
 /*-------------------------------------------------------------------------------------------------
@@ -101,20 +99,23 @@ Calculate (shutter speed)
 		function calculate(){
 			var e = $('#slider').slider('value');
 			var iso3 = $( "#isonumber").val();
-			var c = (15-e-0.32195);
 			//formula to calculate the shutter speed
+			var c = (15-e-0.32195);
 			var newStart=lastStop;
 			var start = (iso3/(Math.pow(2, c)) );
 			var point;
+			
 			console.log("starting point is "+start);
-			//rounds off calculation
-			start = Math.round(start);
+			if(start<1){
+				start=Math.round(1/start);
+				start=start+'\"';
+				console.log("starting point lower is "+start);
+			}else{
+				//rounds off calculation
+				start = Math.round(start);
+			}
 			console.log("starting point is "+start);
-			//if(start<1){
-				//var calc=(15-e-0.32195);
-				//var start = (iso3/(Math.pow(2, calc)) );
-				//console.log("starting point lower is "+start);
-			//}
+
 			
 			
 			//takes starting point calculation, and converts it to the scale used on most cameras
@@ -156,8 +157,8 @@ Calculate (shutter speed)
 			var up=point+1;	
 			for(var i=10; i<=13; i=i+1){
 				if((up)>21){
-						$('#ss td').eq(i).html("-");
-				}else{				
+					$('#ss td').eq(i).html("-");
+				}else{
 					if($('#oneHalf').is(':checked')){
 						$('#ss td').eq(i).html(halfStops[up]);
 					}else if($('#oneThird').is(':checked')){
@@ -167,13 +168,13 @@ Calculate (shutter speed)
 					}
 				}
 				up=up+1;
-			
 			}
+			
 			//this sets the values below the starting point, using the array with set values
 			var down=point-1;
 			for(var i=8; i>=0; i=i-1){
 				if((down)<0){
-						$('#ss td').eq(i).html("-");
+					$('#ss td').eq(i).html("-");
 				}else{	
 					if($('#oneHalf').is(':checked')){
 						$('#ss td').eq(i).html(halfStops[down]);
@@ -184,10 +185,8 @@ Calculate (shutter speed)
 					}
 				}
 				down=down-1;
-				
 			}
-			console.log("Last stop is "+lastStop);
-		}
+		}//end calculate function
 
 /*-------------------------------------------------------------------------------------------------
 ISO
@@ -207,63 +206,57 @@ Scale
 -------------------------------------------------------------------------------------------------*/	
 		function stop(){
 			if($('#oneHalf').is(':checked')) {
-					//resets aperture scale to half
-					var half = ["3.3", "4","4.8","5.6", "6.7","8","9.5","11","13","16","19","22","27", "32"];
-					var j=4;
-					for(var i=0; i<=13; i=i+1){
-						//adjusts aperture based on any filters chosen
-						if($('#checkFilter').is(':checked')){
-							var filter=Math.round((Math.LOG10E*Math.log($( "#filter").val()) * 3.321928)*100)/100;
-							if((i-filter)<0){
-								$('#ap td').eq(i).html("-");
-							}else{							
-								$('#ap td').eq(i).html(half[i-filter]);
-							}
+				//resets aperture scale to half
+				var half = ["3.3", "4","4.8","5.6", "6.7","8","9.5","11","13","16","19","22","27", "32"];
+				var j=4;
+				for(var i=0; i<=13; i=i+1){
+					//adjusts aperture based on any filters chosen
+					if($('#checkFilter').is(':checked')){
+						var filter=Math.round((Math.LOG10E*Math.log($( "#filter").val()) * 3.321928)*100)/100;
+						if((i-filter)<0){
+							$('#ap td').eq(i).html("-");
 						}else{
-							$('#ap td').eq(i).html(half[i]);	
+							$('#ap td').eq(i).html(half[i-filter]);
 						}
+					}else{
+						$('#ap td').eq(i).html(half[i]);	
 					}
-				}else if($('#oneThird').is(':checked')){
-					//resets aperture value to third
-					var third = ["5.6","6.3","7.1","8","9","10","11","13","14","16","18","20","22","25"];
-					var j=4;
-					for(var i=0; i<=13; i=i+1){
-						//adjusts aperture based on any filters chosen
-						if($('#checkFilter').is(':checked')){
-							var filter=Math.round((Math.LOG10E*Math.log($( "#filter").val()) * 3.321928)*100)/100;
-							if((i-filter)<0){
-								$('#ap td').eq(i).html("-");
-							}else{							
-								$('#ap td').eq(i).html(third[i-filter]);
-							}
-						
-						}else{						
-							$('#ap td').eq(i).html(third[i]);
-
-						}
-					}
-					
-				}else{
-					//resets to full stops
-					var full = [".7", "1","1.4","2", "2.8","4","5.6","8","11","16","22","32","45", "64"];
-					for(var i=0; i<=13; i=i+1){
-						//adjust aperture based on any filters chosen
-						if($('#checkFilter').is(':checked')){
-							var filter=Math.round((Math.LOG10E*Math.log($( "#filter").val()) * 3.321928)*100)/100;
-							if((i-filter)<0){
-								$('#ap td').eq(i).html("-");
-							}else{
-								$('#ap td').eq(i).html(full[i-filter]);
-							}
-						}else{
-							$('#ap td').eq(i).html(full[i]);
-						}
-					}					
 				}
+					
+			}else if($('#oneThird').is(':checked')){
+				//resets aperture value to third
+				var third = ["5.6","6.3","7.1","8","9","10","11","13","14","16","18","20","22","25"];
+				var j=4;
+				for(var i=0; i<=13; i=i+1){
+					//adjusts aperture based on any filters chosen
+					if($('#checkFilter').is(':checked')){
+						var filter=Math.round((Math.LOG10E*Math.log($( "#filter").val()) * 3.321928)*100)/100;
+						if((i-filter)<0){
+							$('#ap td').eq(i).html("-");
+						}else{
+							$('#ap td').eq(i).html(third[i-filter]);
+						}
+					}else{
+						$('#ap td').eq(i).html(third[i]);
+					}
+				}
+					
+			}else{
+				//resets to full stops
+				var full = [".7", "1","1.4","2", "2.8","4","5.6","8","11","16","22","32","45", "64"];
+				for(var i=0; i<=13; i=i+1){
+					//adjust aperture based on any filters chosen
+					if($('#checkFilter').is(':checked')){
+						var filter=Math.round((Math.LOG10E*Math.log($( "#filter").val()) * 3.321928)*100)/100;
+						if((i-filter)<0){
+							$('#ap td').eq(i).html("-");
+						}else{
+							$('#ap td').eq(i).html(full[i-filter]);
+						}
+					}else{
+						$('#ap td').eq(i).html(full[i]);
+					}
+				}
+			}
+			calculate(); //recalculates shutter speed if button is clicked.
 		}
-		
-
-
-		
-
-		
