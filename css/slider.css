@@ -1,6 +1,41 @@
 /*-------------------------------------------------------------------------------------------------
-Layout
+General Styles
 -------------------------------------------------------------------------------------------------*/
+body{
+	background-color:black;
+	padding-top: 50px; /*padding for nav bar*/
+	}
+
+input{
+	background-color:#CCCCCC;
+	border: none;
+	color: blue;
+	 width: 3em;
+	}
+	
+li{
+	padding:0 1.2em;
+	}
+
+ul li {
+	display:inline;
+	}
+
+h2{
+	font-size: 1.5em;
+	}
+
+th{
+	width: 8em;
+	}
+	
+td{
+	width: 8em;
+	}
+/*-------------------------------------------------------------------------------------------------
+Classes and Ids
+-------------------------------------------------------------------------------------------------*/
+
 #wrapper {
 	width:960px;
 	margin: 2em auto;
@@ -10,56 +45,21 @@ Layout
 	padding: 0 3em;
 	border-radius:20px;
 	}
-body{
-	background-color:black;
-}
-input{
-	background-color:#CCCCCC;
-}
-
-
-ul li {
-	display:inline;
-	}
-
-li{
-	padding:0 1.2em;
-	}
-
-h2{
-	font-size: 1.5em;
-	}
-
-input{
-	border: none;
-	color: blue;
-	}
-
-th{
-	width: 8em;
-	}
-.table > thead > tr > th {
-	border: none;
-}	
-
-td{
-	width: 8em;
-	}
-input {
-    width: 3em;
-	}
-.form-control{
-	width: 10%;
-	}
-
 #ss{
 	width:20%;
-}
+	}
 
 #ap{
 	width:20%;
 	float:left;
-}
-body { padding-top: 50px; /*padding for nav bar*/
+	}	
+	
+.table > thead > tr > th {
+	border: none;
+	}
 
-}
+.form-control{
+	width: 10%;
+	}
+
+

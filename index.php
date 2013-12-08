@@ -15,7 +15,7 @@
 <body>
 <div id="wrapper">
 		<header>
-			    <!-- sample modal content -->
+			    <!--modal content for about -->
     <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -27,7 +27,6 @@
           <div class="modal-body">
             <p>Light Meter was created by Esther Weeks for CSCI E-15, Dynamic Web Applications, Harvard Extension School</p>
             <p>2013</p>
-            <span class="glyphicon glyphicon-tree-conifer"></span>
 
           </div>
           <div class="modal-footer">
@@ -40,7 +39,7 @@
 			
 			
 			
-			
+			<!-- Nav Bar -->
 			<nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
 				<div class="navbar-header">
 					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -68,7 +67,7 @@
 	<section class="col-md-12 col-sm-8 col-xs-5 " id="wrapper2">
 		<h1>Light Meter</h1>
 		<p>Use this light meter app to calculate exposures for your camera.</p>
-		
+		<!-- ISO controls -->
 		<h2>ISO</h2>
 		<form id="speed">
 			<label for="isonumber">Select the iso</label>
@@ -85,6 +84,7 @@
 			</select>
 		</form>
 		<br>
+		<!-- EV controls -->
 		<h2>EV</h2>
 		<form id="light">
 		 	<label>Select the lighting</label>
@@ -94,6 +94,7 @@
 			<div id="slider"></div>
 		</form>
 		<br>
+		<!-- Selecting Filter -->
 		<form id="filters">
 			<div class="checkbox">
    				<label>
@@ -106,7 +107,6 @@
 						<option>-</option>
 						<option>1</option>
 						<option>2</option>
-						<option>3</option>
 						<option>4</option>
 						<option>8</option>
 						<option>16</option>
@@ -114,6 +114,7 @@
 			</div>
 			<p id="info"></p>
 		</form>
+		<!-- Selecting Scale -->
 		<form id="stop" class="form-inline">
 			<h2>Scale</h2>
 			<div class="radio">
@@ -136,6 +137,8 @@
   			</div>
 
   		</form>
+  		
+  	<!-- Exposures Chart -->
 	<table class="table" id="ap">
         <thead>
           <tr>
